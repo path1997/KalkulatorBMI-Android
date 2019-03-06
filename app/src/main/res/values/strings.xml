@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Kalkulator BMI</string>
+    <string name="wstaw_warto_ci_masy_i_wzrostu">Wstaw wartości masy i wzrostu</string>
+    <string name="sWzrost">Wzrost [cm]</string>
+    <string name="sMasa">Waga [kg]</string>
+    <string name="SBOK">OBLICZ</string>
+    <string name="sBMI">BMI:</string>
+</resources>
