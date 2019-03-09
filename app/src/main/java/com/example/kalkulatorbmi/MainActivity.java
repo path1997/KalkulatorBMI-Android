@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -15,7 +16,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected EditText etMasa;
     public EditText etWzrost;
     public TextView etBMI;
-    private String smasa;
+    public ImageView obrazek;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         etMasa= (EditText) findViewById(R.id.etMasa);
         etWzrost= (EditText) findViewById(R.id.etWzrost);
         etBMI=(TextView) findViewById(R.id.etBMI);
-
+        obrazek=(ImageView) findViewById(R.id.obrazek);
 
 
     }
@@ -48,19 +50,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String komunikat="";
             if(bmi<18.49){
                 komunikat="Niedowaga!!!";
+                obrazek.setImageResource(R.drawable.bad);
             }
             else if(bmi>18.5 && bmi<24.99){
                 komunikat="Waga prawidłowa";
-            } else if(bmi>25){
+                obrazek.setImageResource(R.drawable.ok);
+            }
+            else if(bmi>25){
                 komunikat="Nadwaga!!!";
+                obrazek.setImageResource(R.drawable.bad);
             }
 
 
-            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(buttonOK.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
+
             String wynik = String.valueOf(bmi) + "  " + komunikat;
             etBMI.setText(wynik);
         }
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(buttonOK.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);
 
     }
 
